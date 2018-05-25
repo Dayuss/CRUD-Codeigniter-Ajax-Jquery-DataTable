@@ -29,4 +29,41 @@ class Barang extends CI_Controller {
 		echo json_encode($data,true);
 	}
 
+	public function store(){
+		$data = $this->input->post();
+
+		$res = $this->barang->insert($data);
+		if($res)
+			$msg = array("status" => "success", "msg" => "berhasil menambah barang.");
+		else
+			$msg = array("status" => "success", "msg" => "gagal menambah barang.");
+			
+		echo json_encode($msg, true);
+	}
+
+	public function update(){
+		$data = $this->input->post();
+		$id = $data['id'];
+		unset($data['id']);
+
+		$res = $this->barang->update($data, $id);
+		if($res)
+			$msg = array("status" => "success", "msg" => "berhasil mengubah barang.");
+		else
+			$msg = array("status" => "success", "msg" => "gagal mengubah barang.");
+			
+		echo json_encode($msg, true);
+	}
+
+	public function destroy(){
+		$id = $this->input->post('id');
+
+		$res = $this->barang->delete($id);
+		if($res)
+			$msg = array("status" => "success", "msg" => "berhasil menghapus barang.");
+		else
+			$msg = array("status" => "success", "msg" => "gagal menghapus barang.");
+			
+		echo json_encode($msg, true);
+	}
 }
