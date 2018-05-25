@@ -20,7 +20,7 @@ class Barang extends CI_Controller {
 
 	public function getbarang(){
 		// disini kita buat json untuk barang
-		$data = $this->barang->get();
+		$data = array("data" => $this->barang->get());
 
 		echo json_encode($data, true);
 	}

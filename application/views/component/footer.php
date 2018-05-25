@@ -7,33 +7,17 @@
 		<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 		<script>	
 		$(document).ready( function () {
-			var table = $("#tblBarang").DataTable({
-				"bLengthChange": true,
-				"bPaginate": true,
-				"paginType": "full_numbers",
-				"bInfo": false,
-				"serverSide": false,
-				"order":[
-					[0, "desc"]
-				],
-				"sAjaxSource": "http://localhost/CI-Ajax/index.php/barang/getbarang",
-				"columns": [{
-					"data": "id_barang"
-				},
-				{
-					"data": "kode_barang"
-				},
-				{
-					"data": "nama_barang"
-				}.
-				{
-					"data": "kategori"
-				},
-				{
-					"data": "tgl_beli"
-				}
-				]
-			});
+			var table = $('#tblBarang').DataTable( {
+    ajax: "http://localhost/CI-Ajax/index.php/barang/getbarang",
+    columns: [
+        { data: 'id_barang' },
+        { data: 'kode_barang' },
+        { data: 'nama_barang' },
+        { data: 'kategori' },
+        { data: 'tgl_beli' },
+        { data: null }
+    ]
+} );
 		} );
 	</script>
   </body>
